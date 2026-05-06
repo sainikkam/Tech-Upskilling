@@ -55,6 +55,18 @@ ALTER TABLE quiz_sessions ENABLE ROW LEVEL SECURITY;
 ALTER TABLE quiz_responses ENABLE ROW LEVEL SECURITY;
 ALTER TABLE concept_explanations ENABLE ROW LEVEL SECURITY;
 
+-- Drop policies before recreating (safe to re-run)
+DROP POLICY IF EXISTS "Users can read own progress" ON user_concept_progress;
+DROP POLICY IF EXISTS "Users can insert own progress" ON user_concept_progress;
+DROP POLICY IF EXISTS "Users can update own progress" ON user_concept_progress;
+DROP POLICY IF EXISTS "Users can read own quiz sessions" ON quiz_sessions;
+DROP POLICY IF EXISTS "Users can insert own quiz sessions" ON quiz_sessions;
+DROP POLICY IF EXISTS "Users can update own quiz sessions" ON quiz_sessions;
+DROP POLICY IF EXISTS "Users can read quiz responses for their sessions" ON quiz_responses;
+DROP POLICY IF EXISTS "Users can insert quiz responses for their sessions" ON quiz_responses;
+DROP POLICY IF EXISTS "Authenticated users can read explanations" ON concept_explanations;
+DROP POLICY IF EXISTS "Service role can write explanations" ON concept_explanations;
+
 -- Policies: users can only access their own data
 CREATE POLICY "Users can read own progress"
   ON user_concept_progress FOR SELECT
