@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createClient } from '@/lib/supabase/server'
-import { generateText } from '@/lib/claude/client'
-import { PROMPTS } from '@/lib/claude/prompts'
+import { generateText } from '@/lib/ai/client'
+import { PROMPTS } from '@/lib/ai/prompts'
 import { calcNextReviewDate } from '@/lib/utils'
 import type { QuizQuestion, QuizResult, QuizResponse } from '@/types'
 

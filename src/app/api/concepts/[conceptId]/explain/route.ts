@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createClient } from '@/lib/supabase/server'
-import { generateText } from '@/lib/claude/client'
-import { PROMPTS } from '@/lib/claude/prompts'
+import { generateText } from '@/lib/ai/client'
+import { PROMPTS } from '@/lib/ai/prompts'
 import { getConceptById } from '@/lib/curriculum'
 
 export async function GET(
