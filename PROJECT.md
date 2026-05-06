@@ -247,12 +247,24 @@ One row per concept. Cache of AI-generated explanations.
 
 ## Where your account data lives
 
-Everything is in **your Supabase project**. To see it:
+Everything is permanently saved in **your Supabase project**. Nothing is stored locally — so your progress is safe even if you wipe your machine, as long as your Supabase project exists.
+
+| What | Where in Supabase |
+|---|---|
+| Your login (email + password) | **Authentication → Users** — password is hashed, never plain text |
+| Mastery score per concept | **Table Editor → user_concept_progress** |
+| Every quiz you've taken | **Table Editor → quiz_sessions** |
+| Every question you've answered | **Table Editor → quiz_responses** |
+| AI-generated explanations (cached) | **Table Editor → concept_explanations** |
+
+**To browse your data:**
 1. Go to **supabase.com** → open your project
 2. Click **"Table Editor"** in the left sidebar
-3. You'll see all four tables — click any to browse your data
+3. Click any table to see your rows
 
-Your login credentials (email + hashed password) are stored separately in Supabase Auth, visible under **Authentication → Users** in the Supabase dashboard. Supabase handles all the security around this — passwords are hashed, never stored in plain text.
+**Note:** Right after creating your account, only Authentication → Users will have an entry. The other tables populate as you take quizzes and study concepts.
+
+**Row Level Security (RLS)** is enabled on every table — meaning even if someone else had access to your Supabase project, the database enforces at the query level that each user can only ever read and write their own rows. This is not just app-level protection — it's enforced by the database itself.
 
 ---
 
